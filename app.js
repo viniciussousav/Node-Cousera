@@ -6,16 +6,19 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/userRouter');
 const dishRouter = require('./routes/dishRouter');
 const promoteRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
 
-mongoose.connect("mongodb://localhost:27017/conFusion", {
+mongoose.connect("mongodb+srv://vilela:vilela@cluster0-fysn2.mongodb.net/<dbname>?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
-});
+}).then(() => {
+  console.log("Connected to mongodb")
+})
+
 
 var app = express();
 
